@@ -10,7 +10,7 @@ namespace WCFAcaoVendas.DAL
 {
     public abstract class ClienteDAL
     {
-        public static InfoClientes[] BuscarDados(string codigo)
+        public static InfoCliente[] BuscarDados(string codigo)
         {
             try
             {
@@ -29,10 +29,10 @@ namespace WCFAcaoVendas.DAL
 
                         DataTable dt = FabricaSql.GeraDataTable(comando);
 
-                        List<InfoClientes> registros = new List<InfoClientes>();                        
+                        List<InfoCliente> registros = new List<InfoCliente>();                        
                         foreach (DataRow row in dt.Rows)
                         {
-                            registros.Add(new InfoClientes(row.Field<string>("tipoRegistro"), row.Field<string>("codigoVendedor"), row.Field<string>("codigoCliente"), row.Field<string>("controleCgc"), row.Field<string>("nome"), row.Field<string>("nomeFantasia"), row.Field<string>("endereco"), row.Field<string>("numero"), row.Field<string>("complemento"), row.Field<string>("bairro"), row.Field<string>("cidade"), row.Field<string>("estado"), row.Field<string>("codigoEndPostal"), row.Field<string>("digitoCodEndPostal"), row.Field<string>("telComercial"), row.Field<string>("telFax"), row.Field<string>("regiaoVendas"), row.Field<string>("nomeRegiaoVendas"), row.Field<string>("rotaVisita"), row.Field<string>("nomeRotaVisita"), row.Field<string>("codigoMunicipio"), row.Field<string>("codigoPais"), row.Field<string>("codigoEstado"), row.Field<string>("codigoAtividadeCliente"), row.Field<string>("codigoCategoriaCliente"), row.Field<string>("codigoRegiaoSeguro"), row.Field<string>("codigoGrupoCliente"), row.Field<Single>("limiteCredito"), row.Field<string>("formaPagamento"), row.Field<string>("nomeContatoComercial"), row.Field<string>("cpfCgc"), row.Field<string>("email"), row.Field<Single>("percAcrescimoPreco"), row.Field<string>("inscricaoEstadual"), row.Field<string>("tipoBloqueio"), row.Field<string>("descricaoBloqueio"), row.Field<string>("tipoDocumento"), row.Field<string>("situacao")));
+                            registros.Add(new InfoCliente(row.Field<string>("tipoRegistro"), row.Field<string>("codigoVendedor"), row.Field<string>("codigoCliente"), row.Field<string>("controleCgc"), row.Field<string>("nome"), row.Field<string>("nomeFantasia"), row.Field<string>("endereco"), row.Field<string>("numero"), row.Field<string>("complemento"), row.Field<string>("bairro"), row.Field<string>("cidade"), row.Field<string>("estado"), row.Field<string>("codigoEndPostal"), row.Field<string>("digitoCodEndPostal"), row.Field<string>("telComercial"), row.Field<string>("telFax"), row.Field<string>("regiaoVendas"), row.Field<string>("nomeRegiaoVendas"), row.Field<string>("rotaVisita"), row.Field<string>("nomeRotaVisita"), row.Field<string>("codigoMunicipio"), row.Field<string>("codigoPais"), row.Field<string>("codigoEstado"), row.Field<string>("codigoAtividadeCliente"), row.Field<string>("codigoCategoriaCliente"), row.Field<string>("codigoRegiaoSeguro"), row.Field<string>("codigoGrupoCliente"), row.Field<Single>("limiteCredito"), row.Field<string>("formaPagamento"), row.Field<string>("nomeContatoComercial"), row.Field<string>("cpfCgc"), row.Field<string>("email"), row.Field<Single>("percAcrescimoPreco"), row.Field<string>("inscricaoEstadual"), row.Field<string>("tipoBloqueio"), row.Field<string>("descricaoBloqueio"), row.Field<string>("tipoDocumento"), row.Field<string>("situacao")));
                         }
 
                         return registros.ToArray();
@@ -46,7 +46,7 @@ namespace WCFAcaoVendas.DAL
             }
         }
 
-        public static void Atualiza(InfoClientes[] clientes)
+        public static void Atualiza(InfoCliente[] clientes)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace WCFAcaoVendas.DAL
 
         }
 
-        private static void InserirDados(SqlCommand comando, InfoClientes cliente)
+        private static void InserirDados(SqlCommand comando, InfoCliente cliente)
         {
             var query = new StringBuilder();
             query.AppendLine("insert into Cliente (tipoRegistro, codigoVendedor, codigoCliente, controleCgc, nome, nomeFantasia, ");
@@ -145,7 +145,7 @@ namespace WCFAcaoVendas.DAL
             comando.ExecuteNonQuery();
         }
 
-        public static void AlterarDados(SqlCommand comando, InfoClientes cliente)
+        public static void AlterarDados(SqlCommand comando, InfoCliente cliente)
         {
             var query = new StringBuilder();
             query.AppendLine("update Cliente ");

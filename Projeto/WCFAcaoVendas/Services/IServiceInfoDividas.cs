@@ -7,49 +7,64 @@ using System.Text;
 
 namespace WCFAcaoVendas.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IServiceInfoDividas" in both code and config file together.
     [ServiceContract]
     public interface IServiceInfoDividas
     {
         [OperationContract]
-        void DoWork();
+        InfoDivida[] Importar(string codigo);
     }
 
     #region InfoDividas
-    public class InfoDividas
+    [DataContract]
+    public class InfoDivida
     {
-        [DataMember]
-        public string tipoRegistro; /*Tem valor = 03*/
+        public InfoDivida(string tipoRegistro, string filial, string modeloDocFiscal, string numeroDuplicata, string numeroParcela, string codigoCliente, string controleCgc, string dtVencimento, Single saldoTitulo, string numPedidoAndroid, string situacao)
+        {
+            TipoRegistro = tipoRegistro;
+            Filial = filial;
+            ModeloDocFiscal = modeloDocFiscal;
+            NumeroDuplicata = numeroDuplicata;
+            NumeroParcela = numeroParcela;
+            CodigoCliente = codigoCliente;
+            ControleCgc = controleCgc;
+            DtVencimento = dtVencimento;
+            SaldoTitulo = saldoTitulo;
+            NumPedidoAndroid = numPedidoAndroid;
+            Situacao = situacao;
+        }
 
         [DataMember]
-        public string filial;
+        public string TipoRegistro { get; set; }  /*Tem valor = 03*/
 
         [DataMember]
-        public string modeloDocFiscal;
+        public string Filial { get; set; }
 
         [DataMember]
-        public string numeroDuplicata;
+        public string ModeloDocFiscal { get; set; }
 
         [DataMember]
-        public string numeroParcela;
+        public string NumeroDuplicata { get; set; }
 
         [DataMember]
-        public string codigoCliente;
+        public string NumeroParcela { get; set; }
 
         [DataMember]
-        public string controleCgc;
+        public string CodigoCliente { get; set; }
 
         [DataMember]
-        public string dtVencimento;
+        public string ControleCgc { get; set; }
 
         [DataMember]
-        public Single saldoTitulo;
+        public string DtVencimento { get; set; }
 
         [DataMember]
-        public string pedidoPalm;
+        public Single SaldoTitulo { get; set; }
 
         [DataMember]
-        public int ativo;
+        public string NumPedidoAndroid { get; set; }
+
+        [DataMember]
+        public string Situacao { get; set; }
     }
     #endregion
 }

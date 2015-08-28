@@ -4,18 +4,20 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using WCFAcaoVendas.DAL;
 using System.Transactions;
+using WCFAcaoVendas.DAL;
 
 namespace WCFAcaoVendas.Services
 {
-    public class ServiceInfoClientes : IServiceInfoClientes
+    public class ServiceInfoPedidos : IServiceInfoPedidos
     {
-        public InfoCliente[] Importar(string codigo)
+        public InfoPedido[] Importar(string codigo)
         {
             try
             {
-                return ClienteDAL.BuscarDados(codigo);
+                //Usar paginacao no banco para enviar de pouco em pouco os pedidos para o android
+                //return PedidoDAL.BuscarDados(codigo);
+                return null; 
             }
             catch
             {
@@ -23,22 +25,23 @@ namespace WCFAcaoVendas.Services
             }
         }
 
-        public void Exportar(InfoCliente[] clientes)
+        public void Exportar(InfoPedido[] pedidos)
         {
             try
             {
                 using (var scope = new TransactionScope(TransactionScopeOption.Required, new TimeSpan(0, 0, 55)))
                 {
-                    ClienteDAL.Atualiza(clientes);
+                    PedidoDAL.Atualiza(pedidos);
                     scope.Complete();
                 }
             }
             catch (Exception exception)
             {
                 LogErro.Registrar(exception.Message);
-                throw;
+                //throw;
             }
         }
 
+        
     }
 }

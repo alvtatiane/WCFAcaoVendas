@@ -7,22 +7,21 @@ using System.Text;
 
 namespace WCFAcaoVendas.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IServiceInfoClientes" in both code and config file together.
     [ServiceContract]
     public interface IServiceInfoClientes
     {
         [OperationContract]
-        InfoClientes[] Importar(string codigo);
+        InfoCliente[] Importar(string codigo);
 
         [OperationContract]
-        void Exportar(InfoClientes[] clientes);
+        void Exportar(InfoCliente[] clientes);
     }
 
-    #region InfoClientes
+    #region InfoCliente
     [DataContract]
-    public class InfoClientes
+    public class InfoCliente
     {
-        public InfoClientes(string tipoRegistro, string codigoVendedor, string codigoCliente, string controleCgc, string nomeCliente, string nomeFantasia, string endereco, string numeroEndereco, string complemento, string bairro, string cidade, string estado, string cep, string digitoCep, string telComercial, string telFax, string regiaoVendas, string nomeReV, string rotaVisita, string nomeRoV, string codMunicipio, string codEstado, string codPais, string codAtividadeCliente, string codCategoriaCliente, string codRegiaoSeguro, string codGrupoCliente, Single limiteCredito, string formaPagam, string nomeContatoComercial, string cpfCgc, string email, Single percAcrescimo, string inscricaoEstadual, string tipoBloqueio, string descricaoBloqueio, string tipoDocumento, string situacao)
+        public InfoCliente(string tipoRegistro, string codigoVendedor, string codigoCliente, string controleCgc, string nomeCliente, string nomeFantasia, string endereco, string numeroEndereco, string complemento, string bairro, string cidade, string estado, string cep, string digitoCep, string telComercial, string telFax, string regiaoVendas, string nomeReV, string rotaVisita, string nomeRoV, string codMunicipio, string codEstado, string codPais, string codAtividadeCliente, string codCategoriaCliente, string codRegiaoSeguro, string codGrupoCliente, Single limiteCredito, string formaPagam, string nomeContatoComercial, string cpfCgc, string email, Single percAcrescimo, string inscricaoEstadual, string tipoBloqueio, string descricaoBloqueio, string tipoDocumento, string situacao)
         {
             TipoRegistro = tipoRegistro;
             CodigoVendedor = codigoVendedor;
