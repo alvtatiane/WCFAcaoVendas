@@ -21,11 +21,12 @@ namespace WCFAcaoVendas.Services
     [DataContract]
     public class InfoPedido
     {
-        public InfoPedido(InfoPrincipal infoPrincipal, InfoCondicaoPagamento[] infoCondicoesPagamento, InfoItem[] infoItens)
+        public InfoPedido(InfoPrincipal infoPrincipal, InfoCondicaoPagamento[] infoCondicoesPagamento, InfoItem[] infoItens, string situacao)
         {
             InfoPrincipal = infoPrincipal;
             InfoCondicoesPagamento = infoCondicoesPagamento;
             InfoItens = infoItens;
+            Situacao = situacao;
         }
 
         [DataMember]
@@ -36,6 +37,9 @@ namespace WCFAcaoVendas.Services
 
         [DataMember]
         public InfoItem[] InfoItens;
+
+        [DataMember]
+        public string Situacao { get; set; }
     }
 
     #endregion

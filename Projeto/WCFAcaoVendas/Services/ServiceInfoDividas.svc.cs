@@ -10,10 +10,6 @@ namespace WCFAcaoVendas.Services
 {
     public class ServiceInfoDividas : IServiceInfoDividas
     {
-        public void DoWork()
-        {
-        }
-
         public InfoDivida[] Importar(string codigo)
         {
             try
