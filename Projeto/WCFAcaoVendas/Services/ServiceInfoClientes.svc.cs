@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using WCFAcaoVendas.DAL;
+using System.Transactions;
 
 namespace WCFAcaoVendas.Services
 {
@@ -14,22 +15,19 @@ namespace WCFAcaoVendas.Services
     {
         public void Exportar(InfoClientes[] clientes)
         {
-            foreach (var cliente in clientes)
-            {
-                if (cliente.Situacao == "1")    //Novo cliente
+            try
+            {            
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TimeSpan(0, 0, 55)))
                 {
-                    ClienteDAL.InserirDados(cliente);
-                }
-                else if (cliente.Situacao == "2") //Cliente alterado
-                {
-                    ClienteDAL.AlterarDados(cliente);
-                }
-                else 
-                {
-                    LogErro.Registrar("Situação não encontrada.");
+                    ClienteDAL.Atualiza(clientes);
+                    scope.Complete();
                 }
             }
-            
+            catch (Exception exception)
+            {
+                LogErro.Registrar(exception.Message);
+                throw;
+            }
         }
 
         public InfoClientes[] Importar(string codigo)
