@@ -14,25 +14,7 @@ namespace WCFAcaoVendas.Services
         void DoWork();
     }
 
-    #region InfoPrecos
-    public class InfoPrecos
-    {
-        [DataMember]
-        public string tipoRegistro; /*Tem valor = 06*/
-
-        [DataMember]
-        public string tabelaPreco;
-
-        [DataMember]
-        public string codigoProduto;
-
-        [DataMember]
-        public Single valorAVistaProduto;
-
-        [DataMember]
-        public int ativo;
-    }
-    #endregion
+    
 
     #region InfoDesdobramentoFaturamento
     public class InfoDesdobramentoFaturamento

@@ -68,6 +68,7 @@
     <Content Include="Services\ServiceInfoDividas.svc" />
     <Content Include="Services\ServiceInfoNF.svc" />
     <Content Include="Services\ServiceInfoPedidos.svc" />
+    <Content Include="Services\ServiceInfoPreco.svc" />
     <Content Include="Services\ServiceInfoProduto.svc" />
     <Content Include="Services\ServiceTransmissaoDados.svc" />
     <Content Include="Web.config" />
@@ -80,6 +81,7 @@
     <Compile Include="DAL\LogErro.cs" />
     <Compile Include="DAL\NotaFiscalDAL.cs" />
     <Compile Include="DAL\PedidoDAL.cs" />
+    <Compile Include="DAL\PrecoDAL.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceFormaPagamento.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Services\IServiceInfoDividas.cs" />
     <Compile Include="Services\IServiceInfoNF.cs" />
     <Compile Include="Services\IServiceInfoPedidos.cs" />
+    <Compile Include="Services\IServiceInfoPreco.cs" />
     <Compile Include="Services\IServiceInfoProduto.cs" />
     <Compile Include="Services\IServiceTransmissaoDados.cs" />
     <Compile Include="Services\ServiceFormaPagamento.svc.cs">
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="Services\ServiceInfoPedidos.svc.cs">
       <DependentUpon>ServiceInfoPedidos.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServiceInfoPreco.svc.cs">
+      <DependentUpon>ServiceInfoPreco.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\ServiceInfoProduto.svc.cs">
       <DependentUpon>ServiceInfoProduto.svc</DependentUpon>
