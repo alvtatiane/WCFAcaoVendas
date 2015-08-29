@@ -63,9 +63,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Services\ServiceFormaPagamento.svc" />
+    <Content Include="Services\ServiceInfoFormaPagamento.svc" />
     <Content Include="Services\ServiceInfoClientes.svc" />
+    <Content Include="Services\ServiceInfoDesdobramentoFaturamento.svc" />
     <Content Include="Services\ServiceInfoDividas.svc" />
+    <Content Include="Services\ServiceInfoMensagem.svc" />
     <Content Include="Services\ServiceInfoNF.svc" />
     <Content Include="Services\ServiceInfoPedidos.svc" />
     <Content Include="Services\ServiceInfoPreco.svc" />
@@ -75,31 +77,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ClienteDAL.cs" />
+    <Compile Include="DAL\DesdobramentoFaturamentoDAL.cs" />
     <Compile Include="DAL\DividasDAL.cs" />
     <Compile Include="DAL\FabricaSql.cs" />
     <Compile Include="DAL\FormaPagamentoDAL.cs" />
     <Compile Include="DAL\LogErro.cs" />
+    <Compile Include="DAL\MensagemDAL.cs" />
     <Compile Include="DAL\NotaFiscalDAL.cs" />
     <Compile Include="DAL\PedidoDAL.cs" />
     <Compile Include="DAL\PrecoDAL.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IServiceFormaPagamento.cs" />
+    <Compile Include="Services\IServiceInfoFormaPagamento.cs" />
     <Compile Include="Services\IServiceInfoClientes.cs" />
+    <Compile Include="Services\IServiceInfoDesdobramentoFaturamento.cs" />
     <Compile Include="Services\IServiceInfoDividas.cs" />
+    <Compile Include="Services\IServiceInfoMensagem.cs" />
     <Compile Include="Services\IServiceInfoNF.cs" />
     <Compile Include="Services\IServiceInfoPedidos.cs" />
     <Compile Include="Services\IServiceInfoPreco.cs" />
     <Compile Include="Services\IServiceInfoProduto.cs" />
     <Compile Include="Services\IServiceTransmissaoDados.cs" />
-    <Compile Include="Services\ServiceFormaPagamento.svc.cs">
-      <DependentUpon>ServiceFormaPagamento.svc</DependentUpon>
+    <Compile Include="Services\ServiceInfoFormaPagamento.svc.cs">
+      <DependentUpon>ServiceInfoFormaPagamento.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\ServiceInfoClientes.svc.cs">
       <DependentUpon>ServiceInfoClientes.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\ServiceInfoDesdobramentoFaturamento.svc.cs">
+      <DependentUpon>ServiceInfoDesdobramentoFaturamento.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\ServiceInfoDividas.svc.cs">
       <DependentUpon>ServiceInfoDividas.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServiceInfoMensagem.svc.cs">
+      <DependentUpon>ServiceInfoMensagem.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\ServiceInfoNF.svc.cs">
       <DependentUpon>ServiceInfoNF.svc</DependentUpon>

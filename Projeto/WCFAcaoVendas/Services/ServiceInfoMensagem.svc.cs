@@ -8,13 +8,13 @@ using WCFAcaoVendas.DAL;
 
 namespace WCFAcaoVendas.Services
 {
-    public class ServiceInfoPreco : IServiceInfoPreco
+    public class ServiceInfoMensagem : IServiceInfoMensagem
     {
-        public InfoPreco[] Importar(string codigo)
+        public InfoMensagem[] Importar()
         {
             try
             {
-                return PrecoDAL.BuscarDados(codigo);
+                return MensagemDAL.BuscarDados();
             }
             catch
             {

@@ -101,6 +101,18 @@ namespace WCFAcaoVendas.DAL
             query.AppendLine("  @email, @percAcrescimoPreco, @inscricaoEstadual, @tipoBloqueio, @descricaoBloqueio, ");
             query.AppendLine("  @tipoDocumento, @situacao); ");
 
+            //if (cliente.InfoSocios != null)
+            //{
+            //    for (int i = 0; i < cliente.InfoSocios.Length; i++)
+            //    {
+            //        query.AppendLine("insert into Socios (codigoVendedor, cnpj, nomeSocio, cpfSocio, porcentagemSociedade) ");
+            //        query.AppendLine("values (@codigoVendedor, @cpfCgc, @nomeSocio" + i +", @cpfSocio" + i +", null)");
+
+            //        comando.Parameters.Add("@nomeSocio" + i , SqlDbType.VarChar).Value = cliente.InfoSocios[i].NomeSocio;
+            //        comando.Parameters.Add("@cpfSocio" + i, SqlDbType.VarChar).Value = cliente.InfoSocios[i].CpfSocio;
+            //    }
+            //}
+
             comando.Parameters.Clear();
             comando.Parameters.Add("@tipoRegistro", SqlDbType.VarChar).Value = "4";
             comando.Parameters.Add("@codigoVendedor", SqlDbType.VarChar).Value = Funcoes.RemoveSimbolos(cliente.CodigoVendedor);
@@ -141,6 +153,7 @@ namespace WCFAcaoVendas.DAL
             comando.Parameters.Add("@tipoDocumento", SqlDbType.VarChar).Value = Funcoes.RemoveSimbolos(cliente.TipoDocumento);
             comando.Parameters.Add("@situacao", SqlDbType.VarChar).Value = cliente.Situacao;
 
+            
             comando.CommandText = query.ToString();
             comando.ExecuteNonQuery();
         }

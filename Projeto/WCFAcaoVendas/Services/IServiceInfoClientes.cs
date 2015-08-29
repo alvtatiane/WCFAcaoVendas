@@ -21,7 +21,7 @@ namespace WCFAcaoVendas.Services
     [DataContract]
     public class InfoCliente
     {
-        public InfoCliente(string tipoRegistro, string codigoVendedor, string codigoCliente, string controleCgc, string nomeCliente, string nomeFantasia, string endereco, string numeroEndereco, string complemento, string bairro, string cidade, string estado, string cep, string digitoCep, string telComercial, string telFax, string regiaoVendas, string nomeReV, string rotaVisita, string nomeRoV, string codMunicipio, string codEstado, string codPais, string codAtividadeCliente, string codCategoriaCliente, string codRegiaoSeguro, string codGrupoCliente, Single limiteCredito, string formaPagam, string nomeContatoComercial, string cpfCgc, string email, Single percAcrescimo, string inscricaoEstadual, string tipoBloqueio, string descricaoBloqueio, string tipoDocumento, string situacao)
+        public InfoCliente(string tipoRegistro, string codigoVendedor, string codigoCliente, string controleCgc, string nomeCliente, string nomeFantasia, string endereco, string numeroEndereco, string complemento, string bairro, string cidade, string estado, string cep, string digitoCep, string telComercial, string telFax, string regiaoVendas, string nomeReV, string rotaVisita, string nomeRoV, string codMunicipio, string codEstado, string codPais, string codAtividadeCliente, string codCategoriaCliente, string codRegiaoSeguro, string codGrupoCliente, Single limiteCredito, string formaPagam, string nomeContatoComercial, string cpfCgc, string email, Single percAcrescimo, string inscricaoEstadual, string tipoBloqueio, string descricaoBloqueio, string tipoDocumento, string situacao/*, InfoSocio[] infoSocios*/)
         {
             TipoRegistro = tipoRegistro;
             CodigoVendedor = codigoVendedor;
@@ -63,6 +63,7 @@ namespace WCFAcaoVendas.Services
             Situacao = situacao;    //Situacao  = 1 -> novo cliente
                                     //          = 2 -> cliente alterado
                                     //          = 3 -> cliente deletado
+            //InfoSocios = infoSocios;
         }
 
         [DataMember]
@@ -178,8 +179,34 @@ namespace WCFAcaoVendas.Services
 
         [DataMember]
         public string Situacao { get; set; }
-  
+
+        //[DataMember]
+        //public InfoSocio[] InfoSocios { get; set; }
+
 
     }
     #endregion
+
+    #region InfoSocio
+    [DataContract]
+    public class InfoSocio
+    {
+        public InfoSocio(string nomeSocio, string cpfSocio)
+        {
+            NomeSocio = nomeSocio;
+            CpfSocio = cpfSocio;
+        }
+
+        [DataMember]
+        public string NomeSocio { get; set; }
+
+        [DataMember]
+        public string CpfSocio { get; set; }
+
+        //[DataMember]
+        //public string PorcentagemSociedade { get; set; }
+    }
+
+    #endregion
+
 }

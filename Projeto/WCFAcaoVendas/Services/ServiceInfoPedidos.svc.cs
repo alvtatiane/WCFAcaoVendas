@@ -15,9 +15,7 @@ namespace WCFAcaoVendas.Services
         {
             try
             {
-                //Usar paginacao no banco para enviar de pouco em pouco os pedidos para o android
-                //return PedidoDAL.BuscarDados(codigo);
-                return null; 
+                return PedidoDAL.BuscarDados(codigo);
             }
             catch
             {

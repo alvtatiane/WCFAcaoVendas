@@ -134,7 +134,7 @@ namespace WCFAcaoVendas.Services
     [DataContract]
     public class InfoCondicaoPagamento
     {
-        public InfoCondicaoPagamento(string tipoRegistro, string numPedidoAndroid, string prazoDiasParcela, string dtVencimentoParcela, string valorParcela, string formaPagamento, string situacao)
+        public InfoCondicaoPagamento(string tipoRegistro, string numPedidoAndroid, string prazoDiasParcela, string dtVencimentoParcela, Single valorParcela, string formaPagamento, string situacao)
         {
             TipoRegistro = tipoRegistro;
             NumPedidoAndroid = numPedidoAndroid;
@@ -158,7 +158,7 @@ namespace WCFAcaoVendas.Services
         public string DtVencimentoParcela { get; set; }
 
         [DataMember]
-        public string ValorParcela { get; set; }
+        public Single ValorParcela { get; set; }
 
         [DataMember]
         public string FormaPagamento { get; set; }
@@ -172,7 +172,7 @@ namespace WCFAcaoVendas.Services
     [DataContract]
     public class InfoItem
     {
-        public InfoItem(string tipoRegistro, string numPedidoAndroid, string codigoProduto, string quantidade, string valorUnitario, string percComissao, string valorUnitarioTabelaPreco, string situacao)
+        public InfoItem(string tipoRegistro, string numPedidoAndroid, string codigoProduto, Single quantidade, Single valorUnitario, Single percComissao, Single valorUnitarioTabelaPreco, string situacao)
         {
             TipoRegistro = tipoRegistro;
             NumPedidoAndroid = numPedidoAndroid;
@@ -194,16 +194,16 @@ namespace WCFAcaoVendas.Services
         public string CodigoProduto { get; set; }
 
         [DataMember]
-        public string Quantidade { get; set; }
+        public Single Quantidade { get; set; }
 
         [DataMember]
-        public string ValorUnitario { get; set; }
+        public Single ValorUnitario { get; set; }
 
         [DataMember]
-        public string PercComissao { get; set; }
+        public Single PercComissao { get; set; }
 
         [DataMember]
-        public string ValorUnitarioTabelaPreco { get; set; }
+        public Single ValorUnitarioTabelaPreco { get; set; }
 
         [DataMember]
         public string Situacao { get; set; }

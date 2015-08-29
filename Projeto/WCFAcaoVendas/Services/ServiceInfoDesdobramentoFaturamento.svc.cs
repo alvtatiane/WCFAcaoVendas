@@ -8,13 +8,13 @@ using WCFAcaoVendas.DAL;
 
 namespace WCFAcaoVendas.Services
 {
-    public class ServiceInfoPreco : IServiceInfoPreco
+    public class ServiceInfoDesdobramentoFaturamento : IServiceInfoDesdobramentoFaturamento
     {
-        public InfoPreco[] Importar(string codigo)
+        public InfoDesdobramentoFaturamento[] Importar(string codigo)
         {
             try
             {
-                return PrecoDAL.BuscarDados(codigo);
+                return DesdobramentoFaturamentoDAL.BuscarDados(codigo);
             }
             catch
             {
