@@ -72,6 +72,7 @@
     <Content Include="Services\ServiceInfoPedidos.svc" />
     <Content Include="Services\ServiceInfoPreco.svc" />
     <Content Include="Services\ServiceInfoProduto.svc" />
+    <Content Include="Services\ServiceLoginVendedor.svc" />
     <Content Include="Services\ServiceTransmissaoDados.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -82,11 +83,13 @@
     <Compile Include="DAL\FabricaSql.cs" />
     <Compile Include="DAL\FormaPagamentoDAL.cs" />
     <Compile Include="DAL\LogErro.cs" />
+    <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\MensagemDAL.cs" />
     <Compile Include="DAL\NotaFiscalDAL.cs" />
     <Compile Include="DAL\PedidoDAL.cs" />
     <Compile Include="DAL\PrecoDAL.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
+    <Compile Include="DAL\SocioDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceInfoFormaPagamento.cs" />
     <Compile Include="Services\IServiceInfoClientes.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Services\IServiceInfoPedidos.cs" />
     <Compile Include="Services\IServiceInfoPreco.cs" />
     <Compile Include="Services\IServiceInfoProduto.cs" />
+    <Compile Include="Services\IServiceLoginVendedor.cs" />
     <Compile Include="Services\IServiceTransmissaoDados.cs" />
     <Compile Include="Services\ServiceInfoFormaPagamento.svc.cs">
       <DependentUpon>ServiceInfoFormaPagamento.svc</DependentUpon>
@@ -124,6 +128,9 @@
     </Compile>
     <Compile Include="Services\ServiceInfoProduto.svc.cs">
       <DependentUpon>ServiceInfoProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServiceLoginVendedor.svc.cs">
+      <DependentUpon>ServiceLoginVendedor.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\ServiceTransmissaoDados.svc.cs">
       <DependentUpon>ServiceTransmissaoDados.svc</DependentUpon>

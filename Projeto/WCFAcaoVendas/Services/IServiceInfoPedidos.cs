@@ -48,7 +48,7 @@ namespace WCFAcaoVendas.Services
     [DataContract]
     public class InfoPrincipal
     {
-        public InfoPrincipal(string tipoRegistro, string numPedidoAndroid, string codigoCliente, string controleCgc, string cpfCgc, string dtPedido, string dtEntrega, string frete, string codigoVendedor, string numPedidoCliente, string operacao, string entregaImadiata, string  prazo, string tabelaPreco, string percDesconto, string observacao, string codigoMensagem, string codigoFilial, string situacao)
+        public InfoPrincipal(string tipoRegistro, string numPedidoAndroid, string codigoCliente, string controleCgc, string cpfCgc, string dtPedido, string dtEntrega, string frete, string codigoVendedor, string numPedidoCliente, string operacao, string entregaImadiata, string  prazo, string tabelaPreco, Single percDesconto, string observacao, string codigoMensagem, string codigoFilial, string dtEnvio, string situacao)
         {
             TipoRegistro = tipoRegistro;
             NumPedidoAndroid = numPedidoAndroid;
@@ -68,6 +68,7 @@ namespace WCFAcaoVendas.Services
             Observacao = observacao;
             CodigoMensagem = codigoMensagem;
             CodigoFilial = codigoFilial;
+            DtEnvio = dtEnvio;
             Situacao = situacao;
         }
 
@@ -114,7 +115,7 @@ namespace WCFAcaoVendas.Services
         public string TabelaPreco { get; set; }
 
         [DataMember]
-        public string PercDesconto { get; set; }
+        public Single PercDesconto { get; set; }
 
         [DataMember]
         public string Observacao { get; set; }
@@ -124,6 +125,9 @@ namespace WCFAcaoVendas.Services
 
         [DataMember]
         public string CodigoFilial { get; set; }
+
+        [DataMember]
+        public string DtEnvio { get; set; }
 
         [DataMember]
         public string Situacao { get; set; }

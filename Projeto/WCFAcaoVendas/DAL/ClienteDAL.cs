@@ -41,7 +41,7 @@ namespace WCFAcaoVendas.DAL
             }
             catch (Exception exception)
             {
-                LogErro.Registrar(exception.Message);
+                //LogErro.Registrar(exception.Message);
                 throw;
             }
         }
