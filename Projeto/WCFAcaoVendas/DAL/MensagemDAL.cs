@@ -20,7 +20,7 @@ namespace WCFAcaoVendas.DAL
                     using (SqlCommand comando = FabricaSql.NovoComandoTexto(conexao))
                     {
                         var query = new StringBuilder();
-                        query.AppendLine("select    m.tipoRegistro, m.codigoMensagem, m.referencia, m.linhaMsg1 + ' ' + m.linhaMsg2 + ' ' + m.linhaMsg3 + ' ' + m.linhaMsg4 as conteudo, m.situacao ");
+                        query.AppendLine("select    m.tipoRegistro, m.codigoMensagem, m.referencia, coalesce(m.linhaMsg1, '') + ' ' + coalesce(m.linhaMsg2, '') + ' ' + coalesce(m.linhaMsg3, '') + ' ' + coalesce(m.linhaMsg4, '') as conteudo, m.situacao");
                         query.AppendLine("from      Mensagens m ");
                         query.AppendLine("where     (m.situacao <> 0) and m.tipoRegistro = '08'; ");
 

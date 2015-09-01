@@ -32,7 +32,7 @@ namespace WCFAcaoVendas.DAL
                             return null;
                         }
 
-                        if (dt.Rows[0].Field<string>("numeroVersao") > numeroVersao)
+                        //if (dt.Rows[0].Field<string>("numeroVersao") > numeroVersao)
                         {
                             return dt.Rows[0].Field<string>("link");
                         }
