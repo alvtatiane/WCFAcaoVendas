@@ -73,7 +73,7 @@ namespace WCFAcaoVendas.DAL
             comando.Parameters.Add("@filial", SqlDbType.VarChar).Value = infoLogin.Filial;
             comando.Parameters.Add("@login", SqlDbType.VarChar).Value = infoLogin.Login;
             comando.Parameters.Add("@senha", SqlDbType.VarChar).Value = infoLogin.Senha;
-            comando.Parameters.Add("@numUltimoPedido", SqlDbType.VarChar).Value = infoLogin.NumUltimoPedido;
+            comando.Parameters.Add("@numUltimoPedido", SqlDbType.Int).Value = infoLogin.NumUltimoPedido;
             comando.Parameters.Add("@versaoSoftware", SqlDbType.VarChar).Value = infoLogin.VersaoSoftware;
             comando.Parameters.Add("@numSerieAparelho", SqlDbType.VarChar).Value = infoLogin.NumSerieAparelho;
             comando.Parameters.Add("@atualizado", SqlDbType.Int).Value = infoLogin.Atualizado;
@@ -99,7 +99,7 @@ namespace WCFAcaoVendas.DAL
             comando.Parameters.Add("@filial", SqlDbType.VarChar).Value = infoLogin.Filial;
             comando.Parameters.Add("@login", SqlDbType.VarChar).Value = infoLogin.Login;
             comando.Parameters.Add("@senha", SqlDbType.VarChar).Value = infoLogin.Senha;
-            comando.Parameters.Add("@numUltimoPedido", SqlDbType.VarChar).Value = infoLogin.NumUltimoPedido;
+            comando.Parameters.Add("@numUltimoPedido", SqlDbType.Int).Value = infoLogin.NumUltimoPedido;
             comando.Parameters.Add("@versaoSoftware", SqlDbType.VarChar).Value = infoLogin.VersaoSoftware;
             comando.Parameters.Add("@numSerieAparelho", SqlDbType.VarChar).Value = infoLogin.NumSerieAparelho;
             comando.Parameters.Add("@atualizado", SqlDbType.Int).Value = infoLogin.Atualizado;
@@ -131,6 +131,38 @@ namespace WCFAcaoVendas.DAL
                 return true;
             }
             return false;
+        }
+
+        public static InfoLoginVendedor BuscarDados(string codigo)
+        {
+            try
+            {
+                using (SqlConnection conexao = FabricaSql.NovaConexao())
+                {
+                    using (SqlCommand comando = FabricaSql.NovoComandoTexto(conexao))
+                    {
+                        var query = new StringBuilder();
+                        query.AppendLine("select    l.codigoVendedor, l.nomeVendedor, l.filial, l.numUltimoPedido, l.versaoSoftware, l.numSerieAparelho, l.atualizado, l.situacao ");
+                        query.AppendLine("from      Login l ");
+                        query.AppendLine("where     l.codigoVendedor = @codigo ");
+
+                        comando.CommandText = query.ToString();
+                        comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = codigo;
+
+                        DataTable dt = FabricaSql.GeraDataTable(comando);
+
+                        InfoLoginVendedor info = new InfoLoginVendedor(dt.Rows[0].Field<string>("codigoVendedor"), dt.Rows[0].Field<string>("nomeVendedor"), dt.Rows[0].Field<string>("filial"), null, null, dt.Rows[0].Field<int>("numUltimoPedido"), dt.Rows[0].Field<string>("versaoSoftware"), dt.Rows[0].Field<string>("numSerieAparelho"), dt.Rows[0].Field<int>("atualizado"), dt.Rows[0].Field<string>("situacao"));
+
+                        return info;
+                        
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                //LogErro.Registrar(exception.Message);
+                throw;
+            }
         }
     }
 }

@@ -11,6 +11,18 @@ namespace WCFAcaoVendas.Services
 {
     public class ServiceLoginVendedor : IServiceLoginVendedor
     {
+        public InfoLoginVendedor Importa(string codigo)
+        {
+            try
+            {
+                return LoginDAL.BuscarDados(codigo);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public void Exporta(InfoLoginVendedor infoLogin)
         {
             try
@@ -27,5 +39,6 @@ namespace WCFAcaoVendas.Services
                 throw;
             }
         }
+       
     }
 }

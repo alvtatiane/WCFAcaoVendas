@@ -13,13 +13,17 @@ namespace WCFAcaoVendas.Services
         //Metodo usado para cadastro, alteracao de login, marcar o vendedor como atualizado, atualiza a versao do sw
         [OperationContract]
         void Exporta(InfoLoginVendedor infoLogin);
+
+        //Envia para o android se tem novos dados para o usuario
+        [OperationContract]
+        InfoLoginVendedor Importa(string codigo);
     }
 
     #region InfoLoginVendedor
     [DataContract]
     public class InfoLoginVendedor
     {
-        public InfoLoginVendedor(string codigoVendedor, string nomeVendedor, string filial, string login, string senha, string numUltimoPedido, string versaoSoftware, string numSerieAparelho, int atualizado, string situacao)
+        public InfoLoginVendedor(string codigoVendedor, string nomeVendedor, string filial, string login, string senha, int numUltimoPedido, string versaoSoftware, string numSerieAparelho, int atualizado, string situacao)
         {
             CodigoVendedor = codigoVendedor;
             NomeVendedor = nomeVendedor;
@@ -49,7 +53,7 @@ namespace WCFAcaoVendas.Services
         public string Senha { get; set; }
 
         [DataMember]
-        public string NumUltimoPedido { get; set; }
+        public int NumUltimoPedido { get; set; }
 
         [DataMember]
         public string VersaoSoftware { get; set; }

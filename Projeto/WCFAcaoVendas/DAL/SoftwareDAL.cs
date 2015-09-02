@@ -32,7 +32,7 @@ namespace WCFAcaoVendas.DAL
                             return null;
                         }
 
-                        //if (dt.Rows[0].Field<string>("numeroVersao") > numeroVersao)
+                        if (ComparaVersao(dt.Rows[0].Field<string>("numeroVersao"), numeroVersao))
                         {
                             return dt.Rows[0].Field<string>("link");
                         }
@@ -45,6 +45,50 @@ namespace WCFAcaoVendas.DAL
                 //LogErro.Registrar(exception.Message);
                 throw;
             }
+        }
+
+        private static bool ComparaVersao(string v, string numeroVersao)
+        {
+            int nB1, nB2, nB3;
+            int nA1, nA2, nA3;
+
+            SeparaValores(numeroVersao, out nA1, out nA2, out nA3);
+            SeparaValores(v, out nB1, out nB2, out nB3);
+
+            if (nB1 > nA1)
+            {
+                return true;
+            }
+            else if (nB1 == nA1)
+            {
+                if (nB2 > nA2)
+                {
+                    return true;
+                }
+                else if (nB2 == nA2)
+                {
+                    if (nB3 > nA3)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return false;
+            
+        }
+
+        private static void SeparaValores(string numeroVersao, out int n1, out int n2, out int n3)
+        {
+            var numeros = numeroVersao.Split('.');
+            n1 = int.Parse(numeros[0]);
+            n2 = int.Parse(numeros[1]);
+            n3 = int.Parse(numeros[2]);
         }
     }
 }
