@@ -79,18 +79,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\AtividadeDAL.cs" />
+    <Compile Include="DAL\CategoriaClienteDAL.cs" />
     <Compile Include="DAL\ClienteDAL.cs" />
     <Compile Include="DAL\DesdobramentoFaturamentoDAL.cs" />
     <Compile Include="DAL\DividasDAL.cs" />
+    <Compile Include="DAL\EstadoDAL.cs" />
     <Compile Include="DAL\FabricaSql.cs" />
     <Compile Include="DAL\FormaPagamentoDAL.cs" />
+    <Compile Include="DAL\GrupoClienteDAL.cs" />
     <Compile Include="DAL\LogErro.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\MensagemDAL.cs" />
+    <Compile Include="DAL\MunicipioDAL.cs" />
     <Compile Include="DAL\NotaFiscalDAL.cs" />
+    <Compile Include="DAL\PaisDAL.cs" />
     <Compile Include="DAL\PedidoDAL.cs" />
     <Compile Include="DAL\PrecoDAL.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
+    <Compile Include="DAL\RegiaoSeguroDAL.cs" />
+    <Compile Include="DAL\RegiaoVendaDAL.cs" />
+    <Compile Include="DAL\RotaVisitaDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
     <Compile Include="DAL\SoftwareDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

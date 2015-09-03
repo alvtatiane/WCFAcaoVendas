@@ -4,15 +4,118 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WCFAcaoVendas.DAL;
 
 namespace WCFAcaoVendas.Services
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServiceInfoGerais" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceInfoGerais.svc or ServiceInfoGerais.svc.cs at the Solution Explorer and start debugging.
     public class ServiceInfoGerais : IServiceInfoGerais
     {
-        public void DoWork()
+        public Municipio[] ImportaMunicipio()
         {
+            try
+            {
+                return MunicipioDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Estado[] ImportaEstado()
+        {
+            try
+            {
+                return EstadoDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Pais[] ImportaPais()
+        {
+            try
+            {
+                return PaisDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Atividade[] ImportaAtividade()
+        {
+            try
+            {
+                return AtividadeDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public CategoriaCliente[] ImportaCategoriaCliente()
+        {
+            try
+            {
+                return CategoriaClienteDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public GrupoCliente[] ImportaGrupoCliente()
+        {
+            try
+            {
+                return GrupoClienteDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public RegiaoSeguro[] ImportaRegiaoSeguro()
+        {
+            try
+            {
+                return RegiaoSeguroDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public RegiaoVenda[] ImportaRegiaoVenda()
+        {
+            try
+            {
+                return RegiaoVendaDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public RotaVisita[] ImportaRotaVisita()
+        {
+            try
+            {
+                return RotaVisitaDAL.BuscarDados();
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
