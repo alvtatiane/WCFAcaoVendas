@@ -42,13 +42,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -84,9 +84,11 @@
     <Compile Include="DAL\ClienteDAL.cs" />
     <Compile Include="DAL\DesdobramentoFaturamentoDAL.cs" />
     <Compile Include="DAL\DividasDAL.cs" />
+    <Compile Include="DAL\EmailDAL.cs" />
     <Compile Include="DAL\EstadoDAL.cs" />
     <Compile Include="DAL\FabricaSql.cs" />
     <Compile Include="DAL\FormaPagamentoDAL.cs" />
+    <Compile Include="DAL\GeralDAL.cs" />
     <Compile Include="DAL\GrupoClienteDAL.cs" />
     <Compile Include="DAL\LogErro.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
@@ -167,6 +169,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeraTxt\ManipulaTxt.csproj">
+      <Project>{bfe352b1-e81c-4106-b1af-69cea2f5c863}</Project>
+      <Name>ManipulaTxt</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

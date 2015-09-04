@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Transactions;
 using WCFAcaoVendas.DAL;
+using ManipulaTxt;
 
 namespace WCFAcaoVendas.Services
 {
@@ -25,20 +26,32 @@ namespace WCFAcaoVendas.Services
 
         public void Exportar(InfoPedido[] pedidos)
         {
+            Email[] emails = null;
+
             try
             {
                 using (var scope = new TransactionScope(TransactionScopeOption.Required, new TimeSpan(0, 0, 55)))
                 {
-                    Email[] email = PedidoDAL.Atualiza(pedidos);
-                    EmailDAL.Enviar(email);
+                    emails = PedidoDAL.Atualiza(pedidos);   
                     scope.Complete();
                 }
             }
             catch (Exception exception)
             {
-                LogErro.Registrar(exception.Message);
+                DAL.LogErro.Registrar(exception.Message);
                 //throw;
             }
+
+            if (emails != null)
+            {
+                foreach (var email in emails)
+                {
+                    EmailDAL.Enviar(email);
+                }
+            }
+
+            Atualizacao a = new Atualizacao();
+            //a.Executa();
         }
 
         

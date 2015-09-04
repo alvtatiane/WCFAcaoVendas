@@ -218,25 +218,23 @@ namespace WCFAcaoVendas.Services
     [DataContract]
     public class Email
     {
-        public Email(string assunto, string mensagem)
+        public Email(string assunto, string mensagem, string destinatario)
         {
             Assunto = assunto;
             Mensagem = mensagem;
-            Destinatarios = new List<string>();
-            Enviar = false;
+            Destinatario = destinatario;
+            
         }
 
         [DataMember]
-        public ICollection<string> Destinatarios { get; set; }
+        public string Destinatario { get; set; }
 
         [DataMember]
         public string Assunto { get; set; }
 
         [DataMember]
         public string Mensagem { get; set; }
-
-        [DataMember]
-        public bool Enviar { get; set; }
+        
     }
 
     #endregion

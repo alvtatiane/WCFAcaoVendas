@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace WCFAcaoVendas.DAL
+namespace ManipulaTxt
 {
     public abstract class LogErro
     {
@@ -29,7 +29,7 @@ namespace WCFAcaoVendas.DAL
             log.AppendLine(mensagem);
             log.AppendLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-            string dir = ConfigurationManager.AppSettings["logPath"];
+            string dir = Configuracao.DiretorioTxtLogsCompleto;
             string fileName = string.Format("log_" + DateTime.Now.Year + "_" + DateTime.Now.Month.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0') + ".avlog");
 
             string path = Path.Combine(dir, fileName);

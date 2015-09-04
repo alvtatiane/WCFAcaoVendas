@@ -8,14 +8,12 @@ namespace WCFAcaoVendas.DAL
     public abstract class EmailDAL
     {
         public static void Enviar(Email email)
-        {
-            email.Destinatarios = email.Destinatarios.Distinct().ToList(); //remove repetidos, caso tenha
-
+        {            
             email.Mensagem = email.Mensagem.Replace("\r\n", "<br />").Replace("\r", "").Replace("\n", "");
             var mail = new MailMessage();
-            foreach (var destinatario in email.Destinatarios)
+            foreach (var destinatario in email.Destinatario)
             {
-                mail.To.Add(destinatario);
+                mail.To.Add(email.Destinatario);
             }
 
             //mail.CC.Add(copia);
@@ -36,7 +34,7 @@ namespace WCFAcaoVendas.DAL
             //client.EnableSsl = true; //Gmail trabalha com Server Secured Layer
             try
             {
-#if !DEBUG
+#if DEBUG
                 {
                     client.Send(mail);
                 }

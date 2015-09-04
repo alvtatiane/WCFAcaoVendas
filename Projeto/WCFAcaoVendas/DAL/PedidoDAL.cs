@@ -116,9 +116,9 @@ namespace WCFAcaoVendas.DAL
                             {
                                 throw new Exception("Campo situação não encontrado.");
                             }
-
-                            return GeraEmail(pedidos);
                         }
+
+                        return GeraEmail(pedidos);
                     }
                 }
             }
@@ -135,9 +135,9 @@ namespace WCFAcaoVendas.DAL
             List<Email> list = new List<Email>();
             foreach (var pedido in pedidos)
             {
-                var nomeVendedor = BuscaNomeVendedor(pedido.InfoPrincipal.CodigoVendedor);
-                InfoCliente cliente = BuscaNomeCliente(pedido.InfoPrincipal.CodigoCliente);
-                var nomeCidade = BuscaNomeCidade(cliente.CodigoMunicipio);
+                var nomeVendedor = GeralDAL.BuscaNomeVendedor(pedido.InfoPrincipal.CodigoVendedor);
+                InfoCliente cliente = GeralDAL.BuscaNomeCliente(pedido.InfoPrincipal.CodigoCliente);
+                var nomeCidade = GeralDAL.BuscaNomeCidade(cliente.CodigoMunicipio);
                 var valorTotalPedido = 0;
 
                 var mensagem = String.Format("<b>Pedido realizado por {0} em {1}.</b>", nomeVendedor, pedido.InfoPrincipal.DtPedido);
@@ -147,7 +147,7 @@ namespace WCFAcaoVendas.DAL
 
                 for (int i = 0; i < pedido.InfoItens.Length; i++)
                 {
-                    var nomeProduto = BuscaNomeProduto(pedido.InfoItens[i].CodigoProduto);
+                    var nomeProduto = GeralDAL.BuscaNomeProduto(pedido.InfoItens[i].CodigoProduto);
                     var valorTotalProduto = Convert.ToInt32(pedido.InfoItens[i].Quantidade) * Convert.ToInt32(pedido.InfoItens[i].ValorUnitario);
 
                     mensagem += String.Format("<br />Produto: {0} - {1} ", pedido.InfoItens[i].CodigoProduto, nomeProduto);
@@ -161,10 +161,8 @@ namespace WCFAcaoVendas.DAL
 
                 mensagem += "<b>Total pedido:</b> R$" + valorTotalPedido;
 
-                var email = new Email(String.Format("Pedido nº - {0}", pedido.InfoPrincipal.NumPedidoAndroid), mensagem);
-
-                email.Destinatarios.Add(DataBase.BuscaUsuario(model.Cabecalho.IdProprietario).Email); //usuário que está alterando o chamado
-                email.Destinatarios.Add(model.Cabecalho.Autor.Email); //usuário que está alterando o chamado
+                //var email = new Email(String.Format("Pedido nº - {0}", pedido.InfoPrincipal.NumPedidoAndroid), mensagem, cliente.Email);
+                var email = new Email(String.Format("Pedido nº - {0}", pedido.InfoPrincipal.NumPedidoAndroid), mensagem, "tatianealves91@gmail.com");
 
                 list.Add(email);
             }
