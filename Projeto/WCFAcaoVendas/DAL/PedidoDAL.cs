@@ -92,7 +92,7 @@ namespace WCFAcaoVendas.DAL
             return registros.ToArray();
         }
 
-        public static void Atualiza(InfoPedido[] pedidos)
+        public static Email[] Atualiza(InfoPedido[] pedidos)
         {
             try
             {
@@ -116,6 +116,8 @@ namespace WCFAcaoVendas.DAL
                             {
                                 throw new Exception("Campo situação não encontrado.");
                             }
+
+                            return GeraEmail(pedidos);
                         }
                     }
                 }
@@ -126,6 +128,48 @@ namespace WCFAcaoVendas.DAL
                 throw;
             }
 
+        }
+
+        private static Email[] GeraEmail(InfoPedido[] pedidos)
+        {
+            List<Email> list = new List<Email>();
+            foreach (var pedido in pedidos)
+            {
+                var nomeVendedor = BuscaNomeVendedor(pedido.InfoPrincipal.CodigoVendedor);
+                InfoCliente cliente = BuscaNomeCliente(pedido.InfoPrincipal.CodigoCliente);
+                var nomeCidade = BuscaNomeCidade(cliente.CodigoMunicipio);
+                var valorTotalPedido = 0;
+
+                var mensagem = String.Format("<b>Pedido realizado por {0} em {1}.</b>", nomeVendedor, pedido.InfoPrincipal.DtPedido);
+                mensagem += "<br /><br /><b>Solicitação de: </b><br />" + cliente.NomeCliente;
+                mensagem += "Endereço: <br />" + cliente.Endereco + ", " + cliente.NumeroEndereco + ", " + cliente.Bairro + ", " + nomeCidade;
+                mensagem += "<br /><br />Itens do pedidos: ";
+
+                for (int i = 0; i < pedido.InfoItens.Length; i++)
+                {
+                    var nomeProduto = BuscaNomeProduto(pedido.InfoItens[i].CodigoProduto);
+                    var valorTotalProduto = Convert.ToInt32(pedido.InfoItens[i].Quantidade) * Convert.ToInt32(pedido.InfoItens[i].ValorUnitario);
+
+                    mensagem += String.Format("<br />Produto: {0} - {1} ", pedido.InfoItens[i].CodigoProduto, nomeProduto);
+                    mensagem += "<br />Quantidade: " + pedido.InfoItens[i].Quantidade;
+                    mensagem += "<br />Valor unitário: R$" + pedido.InfoItens[i].ValorUnitario;
+                    mensagem += "<br />Total: R$" + valorTotalProduto;
+                    mensagem += "<br /><br />;";
+
+                    valorTotalPedido += valorTotalProduto;
+                }
+
+                mensagem += "<b>Total pedido:</b> R$" + valorTotalPedido;
+
+                var email = new Email(String.Format("Pedido nº - {0}", pedido.InfoPrincipal.NumPedidoAndroid), mensagem);
+
+                email.Destinatarios.Add(DataBase.BuscaUsuario(model.Cabecalho.IdProprietario).Email); //usuário que está alterando o chamado
+                email.Destinatarios.Add(model.Cabecalho.Autor.Email); //usuário que está alterando o chamado
+
+                list.Add(email);
+            }
+
+            return list.ToArray();
         }
 
         private static void InserirDados(SqlCommand comando, InfoPedido infoPedido)

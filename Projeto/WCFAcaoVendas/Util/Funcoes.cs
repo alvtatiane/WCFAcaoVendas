@@ -28,5 +28,7 @@ namespace WCFAcaoVendas.Util
 
             return str;
         }
+
+
     }
 }

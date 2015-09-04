@@ -29,7 +29,8 @@ namespace WCFAcaoVendas.Services
             {
                 using (var scope = new TransactionScope(TransactionScopeOption.Required, new TimeSpan(0, 0, 55)))
                 {
-                    PedidoDAL.Atualiza(pedidos);
+                    Email[] email = PedidoDAL.Atualiza(pedidos);
+                    EmailDAL.Enviar(email);
                     scope.Complete();
                 }
             }
